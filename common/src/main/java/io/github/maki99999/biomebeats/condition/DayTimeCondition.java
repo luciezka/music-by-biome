@@ -26,9 +26,9 @@ public class DayTimeCondition extends Condition implements TickListener {
         if (player != null) {
             try (Level level = player.level()) {
                 if (checkForDay) {
-                    setConditionMet(!isNight(level.getDayTime()));
+                    setConditionMet(!isNight(level.getDayTime()%24000));
                 } else {
-                    setConditionMet(isNight(level.getDayTime()));
+                    setConditionMet(isNight(level.getDayTime()%24000));
                 }
             } catch (IOException e) {
                 Constants.LOG.error(e.getMessage(), e);
